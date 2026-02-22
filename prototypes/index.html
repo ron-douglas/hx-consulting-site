@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HX Prototype Showcase</title>
+  <meta name="description" content="Single-link showcase for HX naming and design prototypes." />
+  <style>
+    :root {
+      --bg: #0e141b;
+      --panel: #141d27;
+      --ink: #eaf0f6;
+      --muted: #9db1c4;
+      --line: #2a3b4c;
+      --accent: #8ec0ff;
+      --accent-strong: #62a8ff;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% -10%, #213244 0%, transparent 34%),
+        radial-gradient(circle at 90% -8%, #223d5a 0%, transparent 36%),
+        var(--bg);
+      color: var(--ink);
+      font: 16px/1.5 "Avenir Next", "Segoe UI", sans-serif;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 1.4rem auto 2rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .toolbar {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: start;
+      margin-bottom: 0.8rem;
+    }
+
+    .title-copy p {
+      margin-top: 0.4rem;
+    }
+
+    .jump {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .jump:hover {
+      border-color: var(--accent);
+    }
+
+    .control-row {
+      display: grid;
+      gap: 0.65rem;
+      grid-template-columns: 1fr;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    select {
+      min-height: 44px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #101821;
+      color: var(--ink);
+      padding: 0.6rem 0.7rem;
+      font: inherit;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      min-height: 44px;
+      padding: 0.5rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .chip:hover {
+      border-color: var(--accent);
+    }
+
+    .chip[aria-pressed="true"] {
+      background: var(--accent-strong);
+      color: #041324;
+      border-color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .frame-wrap {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .frame-meta {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .frame-meta a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .frame-meta a:hover {
+      text-decoration: underline;
+    }
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 74vh;
+      min-height: 560px;
+      border: 0;
+      background: #fff;
+    }
+
+    .hint {
+      margin-top: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 860px) {
+      .control-row {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+      }
+
+      .top-row {
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="toolbar" aria-label="Prototype controls">
+      <div class="top-row">
+        <div class="title-copy">
+          <h1>Naming + Design Showcase</h1>
+          <p>One link, five live concepts. Use selector or chips to switch.</p>
+        </div>
+        <a id="openDirect" class="jump" href="./hx-story-psychology/index.html" target="_blank" rel="noopener">
+          Open current in new tab
+        </a>
+      </div>
+
+      <div class="control-row">
+        <div>
+          <label for="prototypeSelect">Current concept</label>
+          <select id="prototypeSelect" aria-label="Select prototype"></select>
+        </div>
+        <div class="chips" id="chips" aria-label="Quick switch"></div>
+      </div>
+      <p class="hint">Tip: the selected concept is encoded in the URL hash so you can send a direct variant link.</p>
+    </section>
+
+    <section class="frame-wrap">
+      <div class="frame-meta">
+        <span id="currentName">HX Story Psychology</span>
+        <a id="currentPath" href="./hx-story-psychology/index.html" target="_blank" rel="noopener">Direct URL</a>
+      </div>
+      <iframe
+        id="preview"
+        title="Prototype preview"
+        src="./hx-story-psychology/index.html"
+        loading="lazy"
+      ></iframe>
+    </section>
+  </main>
+
+  <script>
+    const variants = [
+      { id: "hx-story-psychology", name: "HX Story Psychology", path: "./hx-story-psychology/index.html" },
+      { id: "character-clinic-studio", name: "Character Clinic Studio", path: "./character-clinic-studio/index.html" },
+      { id: "arc-and-insight", name: "Arc & Insight", path: "./arc-and-insight/index.html" },
+      { id: "true-arc-advisors", name: "True Arc Advisors", path: "./true-arc-advisors/index.html" },
+      { id: "the-character-psychology-office", name: "The Character Psychology Office", path: "./the-character-psychology-office/index.html" },
+    ];
+
+    const select = document.getElementById("prototypeSelect");
+    const chips = document.getElementById("chips");
+    const preview = document.getElementById("preview");
+    const currentName = document.getElementById("currentName");
+    const currentPath = document.getElementById("currentPath");
+    const openDirect = document.getElementById("openDirect");
+
+    variants.forEach((variant) => {
+      const option = document.createElement("option");
+      option.value = variant.id;
+      option.textContent = variant.name;
+      select.appendChild(option);
+
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "chip";
+      chip.dataset.id = variant.id;
+      chip.textContent = variant.name;
+      chip.setAttribute("aria-pressed", "false");
+      chips.appendChild(chip);
+    });
+
+    const byId = Object.fromEntries(variants.map((v) => [v.id, v]));
+
+    function setVariant(id, syncHash = true) {
+      const variant = byId[id] || variants[0];
+      select.value = variant.id;
+      preview.src = variant.path;
+      currentName.textContent = variant.name;
+      currentPath.href = variant.path;
+      openDirect.href = variant.path;
+
+      chips.querySelectorAll(".chip").forEach((chip) => {
+        chip.setAttribute("aria-pressed", chip.dataset.id === variant.id ? "true" : "false");
+      });
+
+      if (syncHash) {
+        history.replaceState(null, "", `#${variant.id}`);
+      }
+    }
+
+    function fromHash() {
+      const raw = window.location.hash.replace("#", "");
+      return byId[raw] ? raw : variants[0].id;
+    }
+
+    select.addEventListener("change", (event) => setVariant(event.target.value));
+    chips.addEventListener("click", (event) => {
+      const button = event.target.closest(".chip");
+      if (!button) return;
+      setVariant(button.dataset.id);
+    });
+    window.addEventListener("hashchange", () => setVariant(fromHash(), false));
+
+    setVariant(fromHash(), false);
+  </script>
+</body>
+</html>
