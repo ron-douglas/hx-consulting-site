@@ -1,0 +1,63 @@
+Build a mobile-first, single-page website for a consulting practice named "HX Consulting."
+
+Primary positioning:
+- Tagline: "Psychological realism for film & TV"
+- Audience: writers' rooms, showrunners, and producers
+- Tone: discreet, professional, clinically informed
+
+Required sections (single-page scroll):
+1) Hero
+- H1: "Psychological realism for film & TV"
+- Supporting text: "Clinical insight for character development, trauma arcs, and authentic portrayal of under-resourced communities."
+- Primary CTA button: "Request a confidential consult" linking to mailto:contact@hxconsulting.com
+
+2) Services
+- 3 cards:
+  - Script & Character Notes
+  - Writers' Room Consulting
+  - On-Call Advisory
+- Include concise descriptions for each.
+
+3) About
+- Melanie Hsu, PhD: Clinical psychologist specializing in trauma and mental health in under-resourced populations.
+- Karen Xie, LMFT: Licensed Marriage & Family Therapist with experience supporting individuals, couples, and families navigating trauma and adversity.
+- Include a brief joint statement about complementary clinical perspectives for storytelling.
+
+4) How It Works
+- 3-step process:
+  - Confidential inquiry
+  - Scope & format alignment
+  - Fixed-scope engagement
+- Include short note: pricing shared after scoping.
+
+5) Contact
+- Email: contact@hxconsulting.com
+- Required disclaimer text:
+  "Consulting for creative projects only. Not providing therapy or clinical services through this website."
+
+Design and technical requirements:
+- Mobile-first responsive layout
+- Minimal, editorial aesthetic
+- No images required
+- Semantic HTML and accessible structure
+- WCAG AA contrast targets
+- Respect prefers-reduced-motion
+- Fast static site output (plain HTML/CSS/JS or Astro/Next static export)
+- Keep dependencies minimal
+
+Also create a print-friendly one-page document source (HTML or Markdown) that can be exported to:
+- HX_Consulting_OnePager.pdf
+
+One-pager required content:
+- Header: HX Consulting + tagline
+- "What We Do" paragraph
+- Services bullets
+- Short bios for both founders
+- Engagement flow line
+- Contact email
+- Disclaimer: "Creative consulting only. Not providing therapy or clinical services."
+
+Deliverables:
+- Source code for the website
+- Source file for one-pager PDF generation
+- Brief README with run/build/export instructions
